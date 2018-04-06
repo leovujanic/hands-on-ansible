@@ -1,0 +1,16 @@
+- name: "Installing additional software"
+  apt: pkg={{ item }} state=present
+  with_items:
+  - vim
+  - dnsutils
+  - git
+  - ntp
+  - at
+  - lvm2
+
+- name: "Adding bashrc"
+  copy: src=../files/bash.bashrc dest=/etc/bash.bashrc owner=root group=root mode=0644
+
+- name: "Removing users bashrc"
+  shell: creates=/home/leonardvujanic/.bashrc_backup mv /home/leonardvujanic/.bashrc /home/leonardvujanic/.bashrc_backup
+
