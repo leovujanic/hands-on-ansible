@@ -1,0 +1,5 @@
+- name: import-db
+  mysql_db: name=educationx_db state=import target=/var/tmp/dbdump.sql
+
+- name: restart-mysql
+  service: name=mysql state=restarted
